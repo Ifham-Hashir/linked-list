@@ -61,18 +61,30 @@ function LinkedList(){
         this.length--;
       }
     },
+
+    contains(value) {
+      if (this.length === 1){
+        if(this.head.value === value){
+          return true;
+        }
+      }
+      else if(this.length > 1){
+        let currNode = this.head;
+        while(currNode !== this.tail){
+          if(currNode.value === value){
+            return true;
+          }
+          currNode = currNode.nextNode;
+        }
+      }
+      return false;
+    }
   }
 }
 
 let list = LinkedList()
-list.append(4)
 list.append(5)
 list.append(6)
-list.prepend(3)
-console.log(list)
-list.pop()
-list.pop()
-list.pop()
-list.pop()
-list.pop()
-console.log(list)
+list.append(9)
+list.append(11)
+console.log(list.contains(9))

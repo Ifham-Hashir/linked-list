@@ -45,16 +45,34 @@ function LinkedList(){
       return null;
     },
 
+    pop(){
+      if(this.length === 1){
+        this.head = null;
+        this.tail = null;
+        this.length--;
+      }
+      else if(this.length > 1){
+        let currNode = this.head;
+        while(currNode.nextNode !== this.tail){
+          currNode = currNode.nextNode
+        }
+        this.tail = currNode;
+        currNode.nextNode = null;
+        this.length--;
+      }
+    },
   }
 }
 
 let list = LinkedList()
 list.append(4)
 list.append(5)
+list.append(6)
 list.prepend(3)
 console.log(list)
 list.pop()
+list.pop()
+list.pop()
+list.pop()
+list.pop()
 console.log(list)
-
-
-

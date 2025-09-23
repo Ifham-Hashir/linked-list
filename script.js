@@ -46,29 +46,29 @@ function LinkedList(){
     },
 
     pop(){
-      if(this.length === 1){
+      if (this.length === 0){
+        return;
+      }
+      else if(this.length === 1){
         this.head = null;
         this.tail = null;
-        this.length--;
       }
-      else if(this.length > 1){
+      else{
         let currNode = this.head;
         while(currNode.nextNode !== this.tail){
           currNode = currNode.nextNode
         }
         this.tail = currNode;
         currNode.nextNode = null;
-        this.length--;
       }
+      this.length--;
     },
 
     contains(value) {
-      if (this.length === 1){
-        if(this.head.value === value){
-          return true;
-        }
+      if(this.head.value === value || this.tail.value === value){
+        return true;
       }
-      else if(this.length > 1){
+      else {
         let currNode = this.head;
         while(currNode !== this.tail){
           if(currNode.value === value){
@@ -85,6 +85,6 @@ function LinkedList(){
 let list = LinkedList()
 list.append(5)
 list.append(6)
-list.append(9)
-list.append(11)
-console.log(list.contains(9))
+list.append(7)
+console.log(list.contains(6))
+

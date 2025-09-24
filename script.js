@@ -65,26 +65,50 @@ function LinkedList(){
     },
 
     contains(value) {
-      if(this.head.value === value || this.tail.value === value){
-        return true;
-      }
-      else {
-        let currNode = this.head;
-        while(currNode !== this.tail){
-          if(currNode.value === value){
-            return true;
-          }
-          currNode = currNode.nextNode;
+      let currNode = this.head;
+      while (currNode !== null) {
+        if(currNode.value === value){
+          return true;
         }
+        currNode = currNode.nextNode;
       }
       return false;
+    },
+
+    find(value) {
+      let currNode = this.head;
+      let currIndex = 0;
+      while (currIndex !== this.length) {
+        if(currNode.value === value){
+          return currIndex;
+        }
+        currNode = currNode.nextNode;
+        currIndex++;
+      }
+      return null;
+    },
+
+    toString(){
+      let currNode = this.head;
+      let string = "";
+      while(currNode !== null){
+        string += `(${currNode.value}) -> `;
+        currNode = currNode.nextNode;
+      }
+      string += "null";
+      return string;
     }
   }
 }
 
-let list = LinkedList()
-list.append(5)
-list.append(6)
-list.append(7)
-console.log(list.contains(6))
 
+const list = LinkedList();
+
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+
+console.log(list.toString());

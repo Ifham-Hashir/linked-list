@@ -97,6 +97,60 @@ function LinkedList(){
       }
       string += "null";
       return string;
+    },
+
+    insertAt(value, index) {
+      // For index out of bounds
+      if(index > this.length || index < 0){
+        return;
+      }
+      // For inserting node at first index
+      else if(index === 0){
+        let newNode = Node(value, this.head)
+        this.head = newNode;
+      }
+      else{
+        let currNode = this.head;
+        let currIndex = 0;
+        while (currIndex !== this.length) {
+          if(currIndex === index-1){
+            let newNode = Node(value, currNode.nextNode)
+            currNode.nextNode = newNode;
+            //If the node inserted at the last index
+            if(index === this.length){
+              this.tail = newNode;
+            }  
+            break;
+          }
+          currNode = currNode.nextNode;
+          currIndex++;
+        }
+      }
+    },
+
+    removeAt(index){
+      // For index out of bounds
+      if(index >= this.length || index < 0){
+        return;
+      }
+      else if(index === 0){
+        this.head = this.head.nextNode;
+      }
+      else{
+        let currNode = this.head;
+        let currIndex = 0;
+        while (currIndex !== this.length) {
+          if(currIndex === index-1){
+            currNode.nextNode = currNode.nextNode.nextNode;
+            if(index === this.length){
+              this.tail = currNode;
+            }  
+            break;
+          }
+          currNode = currNode.nextNode;
+          currIndex++;
+        }
+      }
     }
   }
 }

@@ -126,6 +126,7 @@ function LinkedList(){
           currIndex++;
         }
       }
+      this.length++;
     },
 
     removeAt(index){
@@ -151,6 +152,7 @@ function LinkedList(){
           currIndex++;
         }
       }
+      this.length--;
     }
   }
 }

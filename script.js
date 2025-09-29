@@ -135,6 +135,9 @@ function LinkedList(){
         return;
       }
       else if(index === 0){
+        if(this.head === this.tail){
+          this.tail = this.tail.nextNode;
+        }
         this.head = this.head.nextNode;
       }
       else{
@@ -167,4 +170,6 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.toString());
+list.removeAt(0);
+console.log(list.head);
+console.log(list.tail);
